@@ -4,6 +4,7 @@
 
 
 import time
+import os
 from datetime import datetime
 from picamera2 import Picamera2
 from ftplib import FTP_TLS
@@ -27,6 +28,12 @@ class TimelapsePiCamera:
         time.sleep(1)
         print("DONE !")
 
+        print("Initializing FTP config from ENV")
+        self.ftp_host = os.environ['FTP_HOST']
+        self.ftp_user = os.environ['FTP_USER']
+        self.ftp_password = os.environ['FTP_PASSWORD']
+        self.ftp_path = os.environ['FTP_PATH']
+
     def start(self):
         print("Start loop...")
         while True:
@@ -44,9 +51,9 @@ class TimelapsePiCamera:
 
     def saveToFtp(self, filename):
         # note : do not forget to add nas-nico DNS resolution to /etc/hosts
-        ftp = FTP_TLS('nas-nico')
-        ftp.login('rpi-0', 'yopLUewqKQFgXe98KAo1qnW43QoYezEV')
-        ftp.cwd('/Timelapses/rpi-0-data')
+        ftp = FTP_TLS(self.ftp_host)
+        ftp.login(self.ftp_user, self.ftp_password)
+        ftp.cwd(self.ftp_path)
         remoteFileName = filename.split("/")[-1]
         ftp.storbinary("STOR " + remoteFileName, open(filename, 'rb'))
         ftp.quit()

@@ -1,3 +1,12 @@
+# should set environment variables when creating service
+# https://serverfault.com/questions/413397/how-to-set-environment-variable-in-systemd-service
+
+[Service]
+Environment="FTP_HOST="
+Environment="FTP_USER="
+Environment="FTP_PASSWORD="
+Environment="FTP_PATH="
+
 [Unit]
 Description=Timelapse Pi Camera service
 After=multi-user.target

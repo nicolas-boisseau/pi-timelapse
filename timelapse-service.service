@@ -1,0 +1,13 @@
+[Unit]
+Description=Timelapse Pi Camera service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/pi-timelapse/timelapse_pi_camera.py
+Restart=always
+StandardOutput=inherit
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target

@@ -13,4 +13,6 @@ Required stuff :
 - linux or docker based server supporting ffmpeg (to compute video)
 
 
+# Sources / inspiration
+[magpi.cc/timelapsepy](https://magpi.cc/timelapsepy)
 

@@ -50,7 +50,7 @@ class TimelapsePiCamera:
         return filename
 
     def saveToFtp(self, filename):
-        # note : do not forget to add nas-nico DNS resolution to /etc/hosts
+        # note : be sure that the host DNS resolution is OK ou add it manually to /etc/hosts
         ftp = FTP_TLS(self.ftp_host)
         ftp.login(self.ftp_user, self.ftp_password)
         ftp.cwd(self.ftp_path)
@@ -71,8 +71,8 @@ class TimelapsePiCamera:
         try:
             self.saveToFtp(filename)
             print("DONE!")
-            # TODO: maybe we could remove the local file?
-            #     os.remove(filename)
+            # remove the local file only when operation is successful
+            os.remove(filename)
         except Exception as ex:
             print("FAILED with error :")
             print(ex)

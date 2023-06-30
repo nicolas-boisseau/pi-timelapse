@@ -29,17 +29,24 @@ class TimelapsePiCamera:
         print("DONE !")
 
         print("Initializing FTP config from ENV")
-        self.ftp_host = os.environ['FTP_HOST']
-        self.ftp_user = os.environ['FTP_USER']
-        self.ftp_password = os.environ['FTP_PASSWORD']
-        self.ftp_path = os.environ['FTP_PATH']
+        if os.environ.__contains__('FTP_HOST'):
+            self.ftp_host = os.environ['FTP_HOST']
+            self.ftp_user = os.environ['FTP_USER']
+            self.ftp_password = os.environ['FTP_PASSWORD']
+            self.ftp_path = os.environ['FTP_PATH']
 
     def start(self):
         print("Start loop...")
         while True:
-            print("Shooting...")
-            self.shoot()
-            print("Done !")
+            now = datetime.now()
+            
+            if now.hour > 8 and now.hour < 22:
+                print("Shooting...")
+                self.shoot()
+                print("Done !")
+            else:
+                print("It's night! waiting until morning...")
+                print("current hour: ", now.hour)
 
             time.sleep(self.intervalInSeconds)
 
@@ -79,6 +86,6 @@ class TimelapsePiCamera:
 
 
 if __name__ == "__main__":
-    cam = TimelapsePiCamera(30)
+    cam = TimelapsePiCamera(300)
     cam.start()
     # cam.shoot()

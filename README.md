@@ -12,6 +12,27 @@ Required stuff :
 - FTP server (to receive snapshots)
 - linux or docker based server supporting ffmpeg (to compute video)
 
+# Install from scratch on raspberry pi zero
+
+1. Use RPI Imager to install Raspbian OS lite (version bullseye)
+   ![RPI Imager](./assets/rpi_imager.png)
+2. Connect with SSH on the RPI
+3. Check for update & upgrade using these commands :
+   ```
+   sudo apt update
+   sudo apt upgrade
+   ```
+4. Install files in `/home/pi-timelapse/`
+5. Edit FTP config in timelapse-service.service
+6. Then copy it in systemd :
+   ```
+   sudo cp /home/pi/pi-timelapse/timelapse-service.service /lib/systemd/system/timelapse-service.service
+   sudo chmod 644 /lib/systemd/system/timelapse-service.service
+   chmod +x /home/pi/pi-timelapse/timelapse_pi_camera.py
+   sudo systemctl daemon-reload
+   sudo systemctl enable timelapse-service.service
+   sudo systemctl start timelapse-service.service
+   ```
 
 # Sources / inspiration
 [magpi.cc/timelapsepy](https://magpi.cc/timelapsepy)

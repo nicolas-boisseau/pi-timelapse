@@ -22,7 +22,7 @@ Required stuff :
    sudo apt update
    sudo apt upgrade
    ```
-4. Install files in `/home/pi-timelapse/`
+4. Install files in `/home/pi/pi-timelapse/`
 5. Edit FTP config in timelapse-service.service
 6. Then copy it in systemd :
    ```
@@ -33,6 +33,10 @@ Required stuff :
    sudo systemctl enable timelapse-service.service
    sudo systemctl start timelapse-service.service
    ```
+
+> NOTE:
+>   Be sure that the FTP hostname is resolvable by the PI
+>   In my case, I had to add my Synology NAS hostname manually in `/etc/hosts`
 
 # Sources / inspiration
 [magpi.cc/timelapsepy](https://magpi.cc/timelapsepy)

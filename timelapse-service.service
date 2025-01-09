@@ -1,11 +1,11 @@
 # should set environment variables when creating service
 # https://serverfault.com/questions/413397/how-to-set-environment-variable-in-systemd-service
 
-[Service]
-Environment="FTP_HOST=nas-nico"
-Environment="FTP_USER=rpi-0"
-Environment="FTP_PASSWORD=yopLUewqKQFgXe98KAo1qnW43QoYezEV"
-Environment="FTP_PATH=/Timelapses/rpi-0-thomas"
+#[Service]
+#Environment="FTP_HOST="
+#Environment="FTP_USER="
+#Environment="FTP_PASSWORD="
+#Environment="FTP_PATH=/Timelapses/rpi-0"
 
 [Unit]
 Description=Timelapse Pi Camera service

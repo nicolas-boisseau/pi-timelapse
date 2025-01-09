@@ -22,9 +22,13 @@ Required stuff :
    sudo apt update
    sudo apt upgrade
    ```
-4. Install files in `/home/pi/pi-timelapse/`
-5. Edit FTP config in timelapse-service.service
-6. Then copy it in systemd :
+4. Install py camera module :
+   ```
+   sudo apt install -y python3-picamera2
+   ```
+6. Install files in `/home/pi/pi-timelapse/`
+7. Edit FTP config in timelapse-service.service
+8. Then copy it in systemd :
    ```
    sudo cp /home/pi/pi-timelapse/timelapse-service.service /lib/systemd/system/timelapse-service.service
    sudo chmod 644 /lib/systemd/system/timelapse-service.service

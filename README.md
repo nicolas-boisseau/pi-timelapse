@@ -26,9 +26,13 @@ Required stuff :
    ```
    sudo apt install -y python3-picamera2
    ```
-6. Install files in `/home/pi/pi-timelapse/`
-7. Edit FTP config in timelapse-service.service
-8. Then copy it in systemd :
+6. Install files in `/home/pi/pi-timelapse/` or git clone this repo
+7. Create a snapshots directory :
+   ```
+   mkdir /home/pi/pi-timelapse/snapshots
+   ```
+9. Edit FTP config in timelapse-service.service
+10. Then copy it in systemd :
    ```
    sudo cp /home/pi/pi-timelapse/timelapse-service.service /lib/systemd/system/timelapse-service.service
    sudo chmod 644 /lib/systemd/system/timelapse-service.service
